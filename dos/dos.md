@@ -31,5 +31,13 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts** that can lead to a DoS attack.
+
+There is no functionality to handle when the system crashes or when the site is flooded with requests.
+
 2. Briefly explain how a malicious attacker can exploit them.
+
+A malicious hacker could repeatedly send more requests than the server can handle and render the system unusable.
+
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the DoS vulnerability?
+
+In addition to sanitizing the input like with the other attacks, **secure.ts** uses try-catch statements to handle the error. It also has a rate limit middleware applied to applicable routes, only allowing a certain number of requests in a given time frame. The server doesn’t crash but rather it presents descriptive errors to indicate what the issue is.

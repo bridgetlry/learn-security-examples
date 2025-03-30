@@ -25,5 +25,13 @@ This example demonstrates tampering through script injection.
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+
+The input is not sanitized in line 58, is directly using the users input without testing it for any executable or malicious code. It implicitly assumes that this input will be an alphanumeric string.
+
 2. Briefly explain how a malicious attacker can exploit them.
+
+A malicious attacker can execute a cross-site scripting attack and inject code and make server execute it, linked to go to a potentially malicious website.
+
 3. Briefly explain why **secure.ts** does not have the same vulnerabilties?
+
+**secure.ts** uses escapeHTML to sanitize the input to replace any special characters to their string version so it is no longer executable.
